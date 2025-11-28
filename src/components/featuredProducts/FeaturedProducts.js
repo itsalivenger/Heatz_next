@@ -14,7 +14,7 @@ const FeaturedProducts = () => {
     }, []);
 
     const fetchProducts = async () => {
-        const response = await sendRequest(`${serverDomain}/products`);
+        const response = await sendRequest(`/api/products`);
         if (response.error) {
             console.log(response.error);
         } else {
