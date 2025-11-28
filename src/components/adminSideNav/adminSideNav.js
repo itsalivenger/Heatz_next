@@ -8,7 +8,8 @@ import NewsletterDashboard from '../NewsletterDashboard/NewsletterDashboard';
 import LazyMedia from '../lazyMedia/LazyMedia';
 import HandleCoupons from '../handleCoupons/HandleCoupons';
 import UserManagement from '../usersManagement/userManagement';
-import { MdMenu, MdDashboard, MdListAlt, MdExpandLess, MdExpandMore, MdAddShoppingCart, MdEditNote, MdLocalOffer, MdCampaign, MdDescription, MdInventory, MdPeople } from 'react-icons/md';
+import FeaturedProducts from '../featuredProducts/FeaturedProducts';
+import { MdMenu, MdDashboard, MdListAlt, MdExpandLess, MdExpandMore, MdAddShoppingCart, MdEditNote, MdLocalOffer, MdCampaign, MdDescription, MdInventory, MdPeople, MdStars } from 'react-icons/md';
 import { FaBox } from 'react-icons/fa';
 import { getUser } from '../other/usefulFunctions';
 
@@ -81,6 +82,10 @@ function AdminSideNav({ handleContent }) {
                     <a href="#analytics" className={styles.navItem} onClick={() => { handleContent(<NewsletterDashboard />) }}>
                         <MdCampaign className={`${styles.icon}`} />
                         <span>Promouvoir vos produits</span>
+                    </a>
+                    <a href="#featured" className={styles.navItem} onClick={() => { handleContent(<FeaturedProducts />) }}>
+                        <MdStars className={`${styles.icon}`} />
+                        <span>Produits en Vedette</span>
                     </a>
                     {(currentUser?.role === 'superadmin' || currentUser?.role === 'drendo') && (
                         <a href="#statements" className={`${styles.navItem}`} onClick={() => { handleContent(<UserManagement />) }}>

@@ -31,7 +31,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           const isTokenExpired = decoded.exp * 1000 < Date.now();
           if (!isTokenExpired) {
             setIsAuthenticated(true);
-            setIsAdmin(decoded.role === 'admin' || decoded.role === 'drendo');
+            setIsAdmin(decoded.role === 'admin' || decoded.role === 'drendo' || decoded.role === 'superadmin');
           } else {
             localStorage.removeItem('token');
             setIsAuthenticated(false);

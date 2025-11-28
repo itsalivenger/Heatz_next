@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import styles from './tabNavigation.module.css';
 
-const TabNavigation = ({ tabs }) => {
-  const [activeTab, setActiveTab] = useState(0);
+const TabNavigation = ({ tabs, activeTab, onTabChange }) => {
 
   return (
     <div className={styles.tabContainer}>
@@ -10,7 +9,7 @@ const TabNavigation = ({ tabs }) => {
         <button
           key={index}
           className={`${styles.tab} ${activeTab === index ? styles.active : ''}`}
-          onClick={() => setActiveTab(index)}
+          onClick={() => onTabChange(index)}
         >
           {tab}
         </button>
