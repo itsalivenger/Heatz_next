@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 
-const LazyMedia = ({ type, src, alt = "", className = "", poster = "", preload = false, ...props }) => {
+const LazyMedia = ({ type, src, alt = "", className = "", poster = "", preload = false, unoptimized, width, height, ...props }) => {
   const [isInViewport, setIsInViewport] = useState(preload);
   const mediaRef = useRef(null);
 
@@ -36,6 +36,8 @@ const LazyMedia = ({ type, src, alt = "", className = "", poster = "", preload =
           alt={alt}
           className={className}
           loading="lazy"
+          width={width}
+          height={height}
           {...props}
         />
       )}

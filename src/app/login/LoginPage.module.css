@@ -1,4 +1,4 @@
-.container{
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,7 +6,7 @@
     padding: 50px 0;
 }
 
-.inputContainer span{
+.inputContainer span {
     color: var(--color-green);
 }
 
@@ -118,17 +118,18 @@
     position: relative;
 }
 
-.show-password{
+.show-password {
     position: absolute;
-    top: 54px;
-    right: 10px;
-    transform: translateY(-50%);
+    bottom: 32px;
+    right: 15px;
     transition: transform 0.3s ease;
     cursor: pointer;
+    width: 24px;
+    height: 24px;
 }
 
-.show-password:hover{
-    transform: translateY(-50%) scale(1.2);
+.show-password:hover {
+    transform: scale(1.2);
 }
 
 @media only screen and (max-width: 700px) {

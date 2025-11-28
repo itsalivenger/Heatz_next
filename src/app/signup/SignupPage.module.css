@@ -164,17 +164,18 @@
     text-decoration: none;
 }
 
-.show-password{
+.show-password {
     position: absolute;
-    top: 50px;
-    right: 10px;
-    transform: translateY(-50%);
+    bottom: 15px;
+    right: 15px;
     transition: transform 0.3s ease;
     cursor: pointer;
+    width: 24px;
+    height: 24px;
 }
 
-.show-password:hover{
-    transform: scale(1.2) translateY(-50%);
+.show-password:hover {
+    transform: scale(1.2);
 }
 
 @media (max-width: 600px) {

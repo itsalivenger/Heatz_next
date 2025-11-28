@@ -10,11 +10,14 @@ import HandleCoupons from '../handleCoupons/HandleCoupons';
 import UserManagement from '../usersManagement/userManagement';
 import { MdMenu, MdDashboard, MdListAlt, MdExpandLess, MdExpandMore, MdAddShoppingCart, MdEditNote, MdLocalOffer, MdCampaign, MdDescription, MdInventory, MdPeople } from 'react-icons/md';
 import { FaBox } from 'react-icons/fa';
+import { getUser } from '../other/usefulFunctions';
 
 
 
-function  AdminSideNav({ handleContent }) {
+function AdminSideNav({ handleContent }) {
     const [open, setOpen] = useState(false);
+    const [currentUser, setCurrentUser] = useState(null);
+
     const toggleSideNav = () => {
         setOpen(!open);
     }
@@ -30,6 +33,9 @@ function  AdminSideNav({ handleContent }) {
 
     useEffect(() => {
         stableHandleContent();
+        // Get current user to check role
+        const user = getUser();
+        setCurrentUser(user);
     }, []);
 
     return (
@@ -76,10 +82,12 @@ function  AdminSideNav({ handleContent }) {
                         <MdCampaign className={`${styles.icon}`} />
                         <span>Promouvoir vos produits</span>
                     </a>
-                    <a href="#statements" className={`${styles.navItem}`} onClick={() => { handleContent(<UserManagement />) }}>
-                        <MdPeople className={`${styles.icon}`} />
-                        <span>Management des utilisateurs</span>
-                    </a>
+                    {(currentUser?.role === 'superadmin' || currentUser?.role === 'drendo') && (
+                        <a href="#statements" className={`${styles.navItem}`} onClick={() => { handleContent(<UserManagement />) }}>
+                            <MdPeople className={`${styles.icon}`} />
+                            <span>Management des utilisateurs</span>
+                        </a>
+                    )}
                 </div>
             </nav>
         </div>
