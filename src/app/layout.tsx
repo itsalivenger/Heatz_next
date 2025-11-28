@@ -24,9 +24,6 @@ function LayoutWithParticles({ children }: { children: React.ReactNode }) {
       <Head>
         <title>Heatz | Votre univers électronique</title>
         <meta name="description" content="Achetez vos appareils électroniques, accessoires et gadgets au meilleur prix. Livraison rapide et service fiable." />
-
-        <meta name="description" content="Achetez vos appareils électroniques, accessoires et gadgets au meilleur prix. Livraison rapide et service fiable." />
-
         <meta name="keywords" content="électronique, gadgets, composants, accessoires, high-tech, circuits, modules" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

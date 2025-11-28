@@ -1,8 +1,9 @@
 /* Global Styles */
 .success {
-    padding: 50px 0;
-    height: 100vh;
+    padding: 20px;
+    min-height: 100vh;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
@@ -15,27 +16,29 @@
     border-radius: 15px;
     align-items: center;
     justify-content: center;
-    width: 80%;
-    padding: 1rem;
+    max-width: 700px;
+    width: 100%;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Order Confirmation Styles */
 .orderConfirmation {
     text-align: center;
-    max-width: 600px;
     width: 100%;
 }
 
 .confirmationIcon {
     color: var(--color-green);
-    border-radius: 50%;
-    padding: 1rem;
-    transform: scale(3);
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.confirmationIcon .material-symbols-outlined {
-    font-size: 3rem;
-    color: #141414;
+.confirmationIcon svg {
+    width: 80px;
+    height: 80px;
 }
 
 .logo {
@@ -50,15 +53,29 @@
 .title {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    font-weight: 700;
+    color: #fff;
 }
 
 .subtitle {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-green);
+    font-weight: 600;
 }
 
 .message {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    color: #ffffffa3;
+    line-height: 1.6;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .actions .btn {
@@ -67,19 +84,28 @@
     color: #141414;
     text-decoration: none;
     padding: 1rem 2rem;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    margin: 0 0.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .actions .btn:hover {
     background-color: var(--color-greenHover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 228, 137, 0.3);
 }
 
 @media (max-width: 767px) {
     .container {
-        padding: 2rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .confirmationIcon svg {
+        width: 60px;
+        height: 60px;
     }
 
     .title {
@@ -87,11 +113,20 @@
     }
 
     .subtitle {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    .message {
+        font-size: 1rem;
+    }
+
+    .actions {
+        flex-direction: column;
+        width: 100%;
     }
 
     .actions .btn {
-        display: block;
-        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
     }
 }

@@ -149,8 +149,8 @@ function SignupPage() {
                 <input
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
-                  type="number"
-                  placeholder="07 76 41 25 46"
+                  type="tel"
+                  placeholder="+212 6XX XX XX XX"
                   style={{ flex: 1 }}
                   required
                 />

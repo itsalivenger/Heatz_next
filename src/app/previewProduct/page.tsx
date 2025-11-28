@@ -10,7 +10,8 @@ import { addToCart, addToFavorite, getUser } from '../../components/other/useful
 import Popup from '../../components/popup/popup';
 import LazyMedia from '../../components/lazyMedia/LazyMedia';
 import { useTheme } from '../../components/other/useTheme';
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart, FaShoppingCart } from 'react-icons/fa';
+import { IoArrowBack } from 'react-icons/io5';
 
 // This is your original component, now renamed.
 function ProductPageContent() {
@@ -62,7 +63,9 @@ function ProductPageContent() {
     return (
         <div className={`${styles["product-container"]} ${theme}`}>
             <div onClick={() => window.history.back()} className={styles.goBackContainer}>
-                <button className={`${styles["go-back"]} material-symbols-outlined`}>arrow_back</button>
+                <button className={styles["go-back"]}>
+                    <IoArrowBack size={24} />
+                </button>
             </div>
             <div className={styles["product-category"]}>
                 {product.category}
@@ -102,13 +105,13 @@ function ProductPageContent() {
 
                     <div className={styles["product-actions"]}>
                         <button className={`${styles["button"]} ${styles["button-cart"]}`} onClick={() => addToCart(user._id, togglePopup, product)}>
-                            Ajouter au Panier <span className='material-symbols-outlined'>shopping_cart</span>
+                            Ajouter au Panier <FaShoppingCart size={20} />
                         </button>
                         <button
                             onClick={() => addToFavorite(product._id, user._id, togglePopup)}
                             className={`${styles["button"]} ${styles["button-wishlist"]}`}
                         >
-                            Ajouter aux favoris <FaHeart size={24} color="white" />
+                            Ajouter aux favoris <FaHeart size={20} color="white" />
                         </button>
                     </div>
                 </div>

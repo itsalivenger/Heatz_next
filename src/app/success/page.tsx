@@ -8,9 +8,6 @@ function Success() {
         <div className={styles.success}>
             <div className={styles.container}>
                 <section className={styles.orderConfirmation}>
-                    <div className={styles.logo}>
-                        <LazyMedia type="image" src="/images/logos/Heatz.png" alt="Company Logo" width={100} height={100} unoptimized={true} />
-                    </div>
                     <div className={styles.confirmationIcon}>
                         <FaCheckCircle size={48} color="green" />
                     </div>

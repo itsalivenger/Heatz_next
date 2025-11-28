@@ -39,7 +39,7 @@ const SearchBar = ({ toggleSearchInput, isActive, handleSubmit }) => {
 
     const handleItemClick = (product) => {
         // Navigate to the product page
-        window.location.href = `/productPreview?_id=${product._id}`;
+        window.location.href = `/previewProduct?_id=${product._id}`;
     };
 
     const handleClose = () => {

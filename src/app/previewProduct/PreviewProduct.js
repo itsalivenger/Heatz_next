@@ -8,12 +8,11 @@ import { Navigation, Pagination } from 'swiper/modules';
 import styles from './PreviewProduct.module.css';
 import sendRequest from '../../../components/other/sendRequest';
 import { useSearchParams } from 'next/navigation';
-import { serverDomain } from '../../../components/other/variables';
 import { addToCart, addToFavorite, getUser } from '../../../components/other/usefulFunctions';
 import Popup from '../../../components/popup/popup';
 import LazyMedia from '../../../components/lazyMedia/LazyMedia';
 import { useTheme } from '../../../components/other/useTheme.js';
-import { FaArrowLeft, FaShoppingCart, FaHeart } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa';
 
 function PreviewProduct() {
   const [product, setProduct] = useState({});
@@ -114,7 +113,7 @@ function PreviewProduct() {
           </div>
         </div>
       </div>
-      <Popup title={content.title} content={content.content} isOpen={isOpen} onClose={() => setIsOpen(false)} onConfirm={() => {}} />
+      <Popup title={content.title} content={content.content} isOpen={isOpen} onClose={() => setIsOpen(false)} onConfirm={() => { }} />
     </div>
   );
 }

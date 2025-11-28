@@ -43,27 +43,32 @@
       color: #fff;
   }
 
-  .goBackContainer{
-    padding: 1em 0;
+  .goBackContainer {
+      padding: 1em 0;
   }
 
   .go-back {
-      display: inline-block;
-      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
       font-size: 24px;
       font-weight: bolder;
       color: #ffffff;
-      background-color: var(--color-green);
+      background-color: #00a86b;
       border: none;
-      border-radius: 5px;
+      border-radius: 50%;
       cursor: pointer;
       text-align: center;
       text-decoration: none;
       transition: background-color 0.3s ease, transform 0.2s ease;
+      width: 40px;
+      height: 40px;
   }
 
   .go-back:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
+      background-color: var(--color-greenHover);
   }
 
   .go-back:active {
@@ -128,27 +133,28 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 5px;
-      padding: .7em 1.2em;
+      gap: 8px;
+      padding: 0.6em 1.5em;
       border: none;
       border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 0.95rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s ease-in-out;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
   }
 
   .button-cart {
-      background-color: var(--color-green);
-      color: white;
+      background-color: #00a86b;
+      color: #ffffff;
       flex: 2;
   }
 
   .button-cart:hover {
-      background-color: var(--color-greenHover);
       transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px rgba(0, 228, 137, 0.3);
   }
 
   .button-wishlist {

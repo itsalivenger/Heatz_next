@@ -22,7 +22,7 @@ const ProductCard = ({ product, user_id, togglePopup }) => {
 
     // If it's not a Cloudinary URL, return the original URL
     return url;
-}
+  }
 
   const shortenText = (text, maxLength = 100, suffix = '...') => {
     // Return original text if it's shorter than max length
@@ -60,7 +60,7 @@ const ProductCard = ({ product, user_id, togglePopup }) => {
   return (
     <div
       className={styles.card}
-      onClick={() => router.push(`/productPreview?_id=${product._id}`)}
+      onClick={() => router.push(`/previewProduct?_id=${product._id}`)}
       role="button"
       tabIndex={0}
       style={{ cursor: 'pointer' }}
