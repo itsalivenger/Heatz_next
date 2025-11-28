@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { connectToDb } from '../../../../../lib/server/connection';
+import { ObjectId } from 'mongodb';
 
 export async function GET(req) {
     try {
@@ -31,7 +32,7 @@ export async function PUT(req) {
         const productsCollection = db.collection('Products');
 
         const result = await productsCollection.updateOne(
-            { _id: productId },
+            { _id: new ObjectId(productId) },
             { $set: { featured } }
         );
 
