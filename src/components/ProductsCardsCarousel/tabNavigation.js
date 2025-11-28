@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styles from './tabNavigation.module.css';
 
 const TabNavigation = ({ tabs, activeTab, onTabChange }) => {

@@ -3,13 +3,9 @@ import { useEffect, useState } from "react";
 import sendRequest from "../components/other/sendRequest";
 import HeroSection from "../components/heroSection/HeroSection";
 import HeroCarousel from "../components/heroCarousel/herocarousel";
-// import { serverDomain } from "../components/other/variables";
-// import LoadingSpinner from "../components/LoadingSpinner/loadingSpinner";
-import LazyMedia from "@/components/lazyMedia/LazyMedia.js";
 import { useTheme } from '../components/other/useTheme';
 import ColoredDivider from "../components/coloredHr/coloredDivider";
 import TitleAndText from "../components/TitleAndText/TitleAndText";
-// import ImageAndVideo from "../components/ImageAndVideo/imageAndVideo";
 import ProductsCardsCarousel from "../components/ProductsCardsCarousel/productsCardsCarousel";
 import ProductsCarousel from "../components/ProductsCarousel/productsCarousel";
 import VideoCarousel from "../components/ImageGallery/videoCarousel";
@@ -23,7 +19,6 @@ interface PopupContent {
 }
 
 function Home() {
-  const [products, setProducts] = useState<any[]>([]);
   const [shippingProducts, setShippingProducts] = useState<any[]>([]);
   const [shippingActiveTab, setShippingActiveTab] = useState(0);
   const [trendingProducts, setTrendingProducts] = useState<any[]>([]);
@@ -36,24 +31,14 @@ function Home() {
   const trendingCategories = ['Casque', 'Souris', 'Clavier', 'Offres 10%'];
 
   useEffect(() => {
-    const getProductsSamples = async () => {
-      const response = await sendRequest(`/api/products/carouselSamples`, 'GET');
-      if (response.error) {
-        console.log(response.error);
-      } else {
-        setProducts(response.products ? response.products : []);
-      }
-    }
-
-    getProductsSamples();
-    handleShippingTabChange(0); // Fetch initial products for first tab
-    handleTrendingTabChange(0); // Fetch initial products for second tab
+    handleShippingTabChange(0);
+    handleTrendingTabChange(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleShippingTabChange = async (index: number) => {
     setShippingActiveTab(index);
 
-    // Logic for "Offres 10%" - fetch featured products
     if (index === 3) {
       const response = await sendRequest(`/api/products/featured`, 'GET');
       if (response.error) {
@@ -65,8 +50,7 @@ function Home() {
       return;
     }
 
-    // For other tabs, search by category
-    let category = shippingCategories[index];
+    const category = shippingCategories[index];
     const response = await sendRequest(`/api/products/search`, 'POST', { searchVal: category });
 
     if (response.error) {
@@ -80,7 +64,6 @@ function Home() {
   const handleTrendingTabChange = async (index: number) => {
     setTrendingActiveTab(index);
 
-    // Logic for "Offres 10%" - fetch featured products
     if (index === 3) {
       const response = await sendRequest(`/api/products/featured`, 'GET');
       if (response.error) {
@@ -92,8 +75,7 @@ function Home() {
       return;
     }
 
-    // For other tabs, search by category
-    let category = trendingCategories[index];
+    const category = trendingCategories[index];
     const response = await sendRequest(`/api/products/search`, 'POST', { searchVal: category });
 
     if (response.error) {
@@ -127,7 +109,7 @@ function Home() {
       />
       <ProductsCarousel togglePopup={togglePopup} products={shippingProducts.length ? shippingProducts : []} />
       <ColoredDivider />
-      <LazyMedia src={null} type="image" img={"/images/flayers/gaming.jpeg"} vid={"https://res.cloudinary.com/dkhvdihhj/video/upload/v1739022957/watchLast_rd2hpb.mp4"} />
+      <video src="https://res.cloudinary.com/dkhvdihhj/video/upload/v1739022957/watchLast_rd2hpb.mp4" autoPlay muted loop playsInline style={{ width: '100%' }} />
       <TitleAndText
         title={"Améliorez Votre Expérience de Jeu"}
         text={`Optimisez votre expérience de jeu avec des accessoires performants, des casques audio immersifs et des périphériques conçus pour offrir précision et confort lors de vos sessions gaming.`}
@@ -140,7 +122,7 @@ function Home() {
       />
       <ProductsCarousel togglePopup={togglePopup} products={trendingProducts.length ? trendingProducts : []} />
       <ColoredDivider />
-      <LazyMedia src={null} type="image" img={"/images/flayers/watch.jpeg"} vid={"https://res.cloudinary.com/dkhvdihhj/video/upload/v1739022991/hero2_cryi01.mp4"} />
+      <video src="https://res.cloudinary.com/dkhvdihhj/video/upload/v1739022991/hero2_cryi01.mp4" autoPlay muted loop playsInline style={{ width: '100%' }} />
       <TitleAndText
         title={"Produits Tendance"}
         text={`Découvrez notre sélection de produits innovants, des accessoires tech de qualité pour améliorer votre quotidien.`}
