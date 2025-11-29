@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 
-const LazyMedia = ({ type, src, alt = "", className = "", poster = "", preload = false, unoptimized, width, height, ...props }) => {
+const LazyMedia = ({ type, src, alt = "", className = "", poster = "", preload = false, unoptimized = false, width = null, height = null, ...props }) => {
   const [isInViewport, setIsInViewport] = useState(preload);
   const mediaRef = useRef(null);
 
@@ -51,6 +51,8 @@ const LazyMedia = ({ type, src, alt = "", className = "", poster = "", preload =
           muted
           loop
           playsInline
+          width={width}
+          height={height}
           {...props}
         />
       )}

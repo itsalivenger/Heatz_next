@@ -12,6 +12,7 @@ import VideoCarousel from "../components/ImageGallery/videoCarousel";
 import Popup from "../components/popup/popup";
 import HomeCategories from "../components/homeCategories/homeCategories";
 import ShippingFeatures from "../components/shippingFeature/shippingFeature";
+import LazyMedia from "../components/lazyMedia/LazyMedia";
 
 interface PopupContent {
   title?: string;
@@ -109,20 +110,20 @@ function Home() {
       />
       <ProductsCarousel togglePopup={togglePopup} products={shippingProducts.length ? shippingProducts : []} />
       <ColoredDivider />
-      <video src="https://res.cloudinary.com/dkhvdihhj/video/upload/v1739022957/watchLast_rd2hpb.mp4" autoPlay muted loop playsInline style={{ width: '100%' }} />
+      <LazyMedia type="video" src="https://res.cloudinary.com/dkhvdihhj/video/upload/v1739022957/watchLast_rd2hpb.mp4" poster="/images/flayers/gaming.jpeg" style={{ width: '50%', height: 'auto', margin: '0 auto', display: 'block' }} alt="Gaming Video" />
       <TitleAndText
         title={"Améliorez Votre Expérience de Jeu"}
         text={`Optimisez votre expérience de jeu avec des accessoires performants, des casques audio immersifs et des périphériques conçus pour offrir précision et confort lors de vos sessions gaming.`}
       />
       <HeroCarousel />
       <ProductsCardsCarousel
-        categories={trendingCategories}
-        activeTab={trendingActiveTab}
-        onTabChange={handleTrendingTabChange}
+        categories={shippingCategories}
+        activeTab={shippingActiveTab}
+        onTabChange={handleShippingTabChange}
       />
-      <ProductsCarousel togglePopup={togglePopup} products={trendingProducts.length ? trendingProducts : []} />
+      <ProductsCarousel togglePopup={togglePopup} products={shippingProducts.length ? shippingProducts : []} />
       <ColoredDivider />
-      <video src="https://res.cloudinary.com/dkhvdihhj/video/upload/v1739022991/hero2_cryi01.mp4" autoPlay muted loop playsInline style={{ width: '100%' }} />
+      <LazyMedia type="video" src="https://res.cloudinary.com/dkhvdihhj/video/upload/v1739022991/hero2_cryi01.mp4" poster="/images/flayers/watch.jpeg" style={{ width: '80%', height: 'auto', margin: '0 auto', display: 'block' }} alt="Watch Video" />
       <TitleAndText
         title={"Produits Tendance"}
         text={`Découvrez notre sélection de produits innovants, des accessoires tech de qualité pour améliorer votre quotidien.`}
