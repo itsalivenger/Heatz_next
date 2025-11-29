@@ -77,7 +77,7 @@ function ProductPageContent() {
                         <Slider {...sliderSettings}>
                             {product.imageUrls.map((url: string, index: number) => (
                                 <div key={index} className={styles["carousel-slide"]}>
-                                    <LazyMedia type="image" alt={`Vue ${index + 1} du produit`} className={styles["carousel-image"]} src={url} width={500} height={500} unoptimized={true} />
+                                    <LazyMedia type="image" alt={`Vue ${index + 1} du produit`} className={styles["carousel-image"]} src={url} unoptimized={true} />
                                 </div>
                             ))}
                         </Slider>

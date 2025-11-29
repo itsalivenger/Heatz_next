@@ -167,9 +167,9 @@ function SignupPage() {
                 required
               />
               {visibility ? (
-                <LazyMedia type={'image'} src={'/images/icons/visibilityOff.svg'} onClick={() => setVisibility(!visibility)} className={styles["show-password"]} alt="hide password" width={24} height={24} unoptimized={true} />
+                <LazyMedia type={'image'} src={'/images/icons/visibilityOff.svg'} onClick={() => setVisibility(!visibility)} className={styles["show-password"]} alt="hide password" unoptimized={true} />
               ) : (
-                <LazyMedia type={'image'} src={'/images/icons/visibility.svg'} onClick={() => setVisibility(!visibility)} className={styles["show-password"]} alt="show password" width={24} height={24} unoptimized={true} />
+                <LazyMedia type={'image'} src={'/images/icons/visibility.svg'} onClick={() => setVisibility(!visibility)} className={styles["show-password"]} alt="show password" unoptimized={true} />
               )}
             </div>
           </div>
